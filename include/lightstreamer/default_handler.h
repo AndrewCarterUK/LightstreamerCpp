@@ -5,6 +5,7 @@
 #include <lightstreamer/credentials.h>
 #include <lightstreamer/handler.h>
 
+#include <boost/thread.hpp>
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -54,6 +55,7 @@ namespace lightstreamer {
         private:
             Credentials const m_credentials;
             std::weak_ptr<Client> m_client;
+            boost::mutex m_mutex;
             int m_last_request_id;
             int m_last_sub_id;
     };

@@ -106,10 +106,17 @@ namespace lightstreamer {
         std::string const& data_adapter,
         bool snapshot)
     {
+        m_mutex.lock();
+
+        int request_id = ++m_last_request_id;
+        int sub_id = ++m_last_sub_id;
+
+        m_mutex.unlock();
+
         get_client()->command("control", {{
             { "LS_op", "add" },
-            { "LS_reqId", std::to_string(++m_last_request_id) },
-            { "LS_subId", std::to_string(++m_last_sub_id) },
+            { "LS_reqId", std::to_string(request_id) },
+            { "LS_subId", std::to_string(sub_id) },
             { "LS_mode", mode },
             { "LS_group", group },
             { "LS_schema", schema },

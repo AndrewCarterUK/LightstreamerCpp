@@ -1,5 +1,7 @@
 # LightstreamerCpp
 
+[![C++ Test](https://github.com/AndrewCarterUK/LightstreamerCpp/workflows/C++%20Test/badge.svg)](https://github.com/AndrewCarterUK/LightstreamerCpp/actions?query=workflow%3A%22C%2B%2B+Test%22+branch%3Amaster)
+
 LightstreamerCpp is an asynchronous, thread safe client for the [Lightstreamer](https://lightstreamer.com/) protocol.
 
 The library uses [Boost.Beast](https://www.boost.org/doc/libs/1_72_0/libs/beast/doc/html/index.html) for networking.

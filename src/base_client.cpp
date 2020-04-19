@@ -169,7 +169,7 @@ namespace lightstreamer {
                 break;
             }
 
-            std::string current_line{ buffer_string.substr(start_position, crlf_position) };
+            std::string current_line{ buffer_string.substr(start_position, crlf_position - start_position) };
 
             std::vector<std::string> items;
 

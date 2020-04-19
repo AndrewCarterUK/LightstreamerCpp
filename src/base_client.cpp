@@ -159,7 +159,7 @@ namespace lightstreamer {
             return handle_error_code(error_code);
         }
 
-        auto buffer_string{ beast::buffers_to_string(m_buffer.data()) };
+        std::string buffer_string{ beast::buffers_to_string(m_buffer.data()) };
         std::size_t start_position{ 0 };
 
         while (1) {
@@ -169,9 +169,11 @@ namespace lightstreamer {
                 break;
             }
 
+            std::string current_line{ buffer_string.substr(start_position, crlf_position) };
+
             std::vector<std::string> items;
 
-            boost::split(items, buffer_string.substr(start_position, crlf_position), boost::is_any_of(","));
+            boost::split(items, current_line, boost::algorithm::is_any_of(","));
 
             std::for_each(items.begin(), items.end(), [] (std::string& item) {
                 item = url_decode(item);
@@ -184,8 +186,7 @@ namespace lightstreamer {
 
         m_buffer.consume(start_position);
 
-        bind_read_handler();
-                                                                        
+        bind_read_handler();                                                            
     }
 
     template <typename Derived>

@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: make test
+    - name: install boost
+      run: apt-get install -y libboost-all-dev
+    - name: make
       run: make test
-    - name: build/test
+    - name: test
       run: build/test

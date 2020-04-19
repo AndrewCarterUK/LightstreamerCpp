@@ -16,7 +16,7 @@ jobs:
     - name: update package lists
       run: sudo apt-get update
     - name: install boost
-      run: sudo apt-get install -y libboost1.68 libboost1.68-dev
+      run: sudo apt-get install -y libboost1.70 libboost1.70-dev
     - name: make
       run: make test
     - name: test

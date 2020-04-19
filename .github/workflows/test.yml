@@ -11,8 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: add boost repository
+      run: sudo add-apt-repository ppa:mhier/libboost-latest
+    - name: update package lists
+      run: sudo apt-get update
     - name: install boost
-      run: sudo apt-get install -y libboost-all-dev
+      run: sudo apt-get install libboost
     - name: make
       run: make test
     - name: test

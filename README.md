@@ -25,7 +25,7 @@ class Handler : public lightstreamer::DefaultHandler {
         void on_session(std::string const& session_id, int, int, std::string const&) override {
             std::cout << "Connected (session id: " << session_id << ")\n";
 
-            int sub_id = subscribe("item|item2|item3", "stock_name|last_price", "MERGE", "QUOTE_ADAPTER");
+            int sub_id = subscribe("item item2 item3", "stock_name last_price", "MERGE", "QUOTE_ADAPTER");
 
             std::cout << "Requested subscription (sub_id: " << sub_id << ")\n";
         }
